@@ -1,7 +1,19 @@
-// import * as mysql from "mysql";
-// var mysql = require("mysql");
+//import * as mysql from "mysql";
+var mysql = require("mysql");
+var config = require("./Config");
 
-// var ConnectionUtil  = {
+var connection = mysql.createConnection({
+		host: config.host,
+		user: config.user,
+		password: config.password,
+		database: config.database
+		});
+
+var query = async function(sql, parameters){
+	 await connection.query(sql, parameters);	
+}
+
+// class ConnectionUtil {
 
 // 	constructor(){
 // 		this.connection = mysql.createConnection({
@@ -23,7 +35,7 @@
 // 	}
 // }
 
-// module.exports = ConnectionUtil
+module.exports =  { connection, query };
 
 // const con = new ConnectionUtil;
 // con.query("INSERT INTO User VALUES (?, ?, ?)", [0, 'Teste2', 'teste2']);

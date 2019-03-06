@@ -1,23 +1,18 @@
-var app = require('./config/express')();
-// const mysql = require('mysql');
-
- // const ConnectionUtil = require("./src/system/ConnectionUtil.js");
-
- app.listen(app.get('port'), function(req, res){
- 	console.log("Servidor rodando com Express");
- });
+// var app = require('./config/express')();
 
 
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "0xff8029"
-// });
+//  app.listen(app.get('port'), function(req, res){
+//  	console.log("Servidor rodando com Express");
+//  });
 
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
+var banco = require('./src/system/ConnectionUtil');
+var user = require('./core/user/User');
+var UserController = require('./core/user/UserController')
 
-// var con = (new ConnectionUtil()).getConnection();
-// console.log(con);
+//banco.query("INSERT INTO User VALUES (?, ?, ?)", [0, 'Teste2', 'teste2']);
+
+user.set("Jack", "Nicholson");
+
+//UserController.create(banco, user)
+
+console.log(UserController.select(banco, 0));

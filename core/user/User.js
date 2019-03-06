@@ -1,9 +1,9 @@
-var Model = require("../../system/Model");
+var firstname = "";
+var lastname = "";
 
-class User extends Model {
-	
-	constructor(firstname, lastname){
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
+var set = function(firstname, lastname){
+	this.firstname = firstname;
+	this.lastname = lastname;
 }
+
+module.exports = {firstname, lastname, set};
