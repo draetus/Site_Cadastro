@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+		<link rel="stylesheet" href="/css/styles.css">
+	</head>
+	<body ng-controller="myCtrl" ng-app="myApp">
+		
+		<div>
+			<table>
+				<tr>
+					<td> <a href= <%=index%> > One Session Page </a> </td>
+					<td> <a href= <%=real%>> Real Page </a> </td>
+				</tr>
+			</table>
+		</div>
+
+
+
+		<div>
+			<h1> ONE PAGE ONE SESSION </h1>
+			<h2 ng-hide="!hide_list" ng-click="hide()"> SHOW LIST </h1>
+			<h2 ng-hide="hide_list" ng-click="hide()"> HIDE LIST </h1>
+
+			<form name="myForm">
+				Firstname: <input type="text" name="input1" ng-model="firstname" required>
+				Lastname: <input type="text" name="input2" ng-model="lastname" required>
+			</form>
+			<h2 ng-click="add()" > ADD USER </h1> 
+
+			<table ng-hide="hide_list">
+				<tr ng-repeat="x in allnames | orderBy : 'firstname'">
+					<td ng-click="init_edit($index)">EDIT</td>
+					<td>{{ $index + 1 }}</td>
+					<td>{{x.firstname}}</td>
+					<td>{{x.lastname}}</td>
+					<td ng-click="delete($index)">X</td>
+				</tr>
+			</table>
+
+			<form name="myFormEdit" ng-hide="edit_hide">
+				Firstname: <input type="text" name="input3" ng-model="firstnameEdit" required>
+				Lastname: <input type="text" name="input4" ng-model="lastnameEdit" required>
+				<h2 ng-click="edit()" > EDIT USER </h1> 
+			</form>
+			
+		</div>
+
+
+	<script src=/js/angular_one_session.js></script>
+	</body>
+
+	
+</html>
